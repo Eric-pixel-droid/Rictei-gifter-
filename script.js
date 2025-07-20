@@ -1,0 +1,48 @@
+const family = [
+  { name: "Dad", phone: "2547XXXXXXXX" },
+  { name: "Mom", phone: "2547XXXXXXXX" },
+  { name: "Faith", phone: "2547XXXXXXXX" },
+  { name: "Grace", phone: "2547XXXXXXXX" },
+  { name: "Joy", phone: "2547XXXXXXXX" },
+  { name: "Abednego", phone: "2547XXXXXXXX" },
+  { name: "Eric", phone: "2547XXXXXXXX" }
+];
+
+// Shuffle array (Fisher-Yates)
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// Check if already selected
+const alreadySelected = localStorage.getItem("selectedPerson");
+const container = document.getElementById("boxContainer");
+
+if (alreadySelected) {
+  container.innerHTML = `<p style="color: #c62828; font-weight: bold;">
+    You've already selected your gift box 🎁!
+  </p>`;
+} else {
+  const shuffledFamily = shuffle([...family]);
+
+  shuffledFamily.forEach((person, index) => {
+    const btn = document.createElement("button");
+    btn.className = "box";
+    btn.textContent = `Box ${index + 1}`;
+    btn.onclick = () => revealPerson(person);
+    container.appendChild(btn);
+  });
+}
+
+function revealPerson(person) {
+  alert(`You selected: ${person.name}`);
+  localStorage.setItem("selectedPerson", person.name);
+
+  // Redirect to WhatsApp
+  const text = encodeURIComponent("I selected you for the gifting.");
+  const url = `https://wa.me/${person.phone}?text=${text}`;
+  window.location.href = url;
+}

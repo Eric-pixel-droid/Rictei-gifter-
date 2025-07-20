@@ -1,14 +1,13 @@
 const family = [
-  { name: "Dad", phone: "2547XXXXXXXX" },
-  { name: "Mom", phone: "2547XXXXXXXX" },
-  { name: "Faith", phone: "2547XXXXXXXX" },
+  { name: "Dad", phone: "254729519409" },
+  { name: "Mom", phone: "254724485150" },
+  { name: "Faith", phone: "254705" },
   { name: "Grace", phone: "2547XXXXXXXX" },
-  { name: "Joy", phone: "2547XXXXXXXX" },
-  { name: "Abednego", phone: "2547XXXXXXXX" },
-  { name: "Eric", phone: "2547XXXXXXXX" }
+  { name: "Joy", phone: "254110356000" },
+  { name: "Abednego", phone: "254708009498" },
+  { name: "Eric", phone: "254711374759" }
 ];
 
-// Shuffle array (Fisher-Yates)
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -17,7 +16,6 @@ function shuffle(array) {
   return array;
 }
 
-// Check if already selected
 const alreadySelected = localStorage.getItem("selectedPerson");
 const container = document.getElementById("boxContainer");
 
@@ -31,7 +29,7 @@ if (alreadySelected) {
   shuffledFamily.forEach((person, index) => {
     const btn = document.createElement("button");
     btn.className = "box";
-    btn.textContent = `Box ${index + 1}`;
+    btn.textContent = "🎁";
     btn.onclick = () => revealPerson(person);
     container.appendChild(btn);
   });
@@ -41,7 +39,6 @@ function revealPerson(person) {
   alert(`You selected: ${person.name}`);
   localStorage.setItem("selectedPerson", person.name);
 
-  // Redirect to WhatsApp
   const text = encodeURIComponent("I selected you for the gifting.");
   const url = `https://wa.me/${person.phone}?text=${text}`;
   window.location.href = url;

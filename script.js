@@ -1,8 +1,8 @@
 const family = [
   { name: "Dad", phone: "254729519409" },
   { name: "Mom", phone: "254724485150" },
-  { name: "Faith", phone: "254705" },
-  { name: "Grace", phone: "2547XXXXXXXX" },
+  { name: "Faith", phone: "254705719709" },
+  { name: "Grace", phone: "254798730465" },
   { name: "Joy", phone: "254110356000" },
   { name: "Abednego", phone: "254708009498" },
   { name: "Eric", phone: "254711374759" }
